@@ -1,0 +1,17 @@
+Sub CopySheets()
+
+
+    Worksheets("Sheet-source").Range("A1:D1").Copy
+    Worksheets("Sheet-destination").Activate
+    Worksheets("Sheet-destination").Range("A1").Select
+    FirstEmptyRow = Selection.End(xlDown).Row + 1
+    RangeStrFirstEmptyRow = "A" & FirstEmptyRow & ":D" & FirstEmptyRow
+    Worksheets("Sheet-destination").Range(RangeStrFirstEmptyRow).PasteSpecial _
+      Paste:=xlValues, Operation:=xlPasteSpecialOperationNone
+    Worksheets("Sheet-destination").Activate
+
+'Debug.Print ActiveSheet.Range(ActiveCell.Address()).Value
+
+End Sub
+
+
